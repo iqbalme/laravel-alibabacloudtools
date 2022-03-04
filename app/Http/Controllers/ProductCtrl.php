@@ -246,7 +246,7 @@ class ProductCtrl extends Controller
 		} else {
 			return response()->json(['error' => false, 'message' => 'Tidak ada produk untuk pencarian yang identik.']);
 		}
-		return response()->json(['error' => true, 'message' => 'Terjadi error. Silakan dicoba lagi !']);
+		//return response()->json(['error' => true, 'message' => 'Terjadi error. Silakan dicoba lagi !']);
 	}
 	
 
