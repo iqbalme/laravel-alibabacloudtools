@@ -215,7 +215,9 @@ class ProductCtrl extends Controller
 			if(file_exists($imgPath)){
 				unlink($imgPath);
 			}
-			$this->searchProductByImgInDb($found_products);
+			if(count($found_products) > 0){
+				$this->searchProductByImgInDb($found_products);
+			}
 		} catch (TeaUnableRetryError $e) {
 			return response()->json($e->getLastException());
 		} catch (Exception $e) {
@@ -228,7 +230,7 @@ class ProductCtrl extends Controller
 	public function searchProductByImgInDb($arrImage){
 		$cariId = array_column($arrImage, 'productId');
 		$searchedProducts = Products::whereIn('product_identifier', $cariId)->get();
-		echo response()->json($searchedProducts);
+		echo $searchedProducts;
 	}
 	
 	public function imgUpload(Request $request){
