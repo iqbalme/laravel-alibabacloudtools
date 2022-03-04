@@ -219,7 +219,7 @@ class ProductCtrl extends Controller
 			if($found_products !== null){
 				$this->searchProductByImgInDb($found_products);
 			} else {
-				echo json_encode("{'data': null, 'error':true, 'message': 'Tidak ada produk untuk pencarian yang identik.'}");
+				echo [];
 			}
 		} catch (TeaUnableRetryError $e) {
 			return response()->json($e->getLastException());
