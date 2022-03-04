@@ -235,8 +235,7 @@ class ProductCtrl extends Controller
 				//$searchedProducts[] = $product;
 			//}
 		//}
-		echo $searchedProducts;
-		//echo response()->json($searchedProducts);
+		echo response()->json($searchedProducts);
 	}
 	
 	public function imgUpload(Request $request){
