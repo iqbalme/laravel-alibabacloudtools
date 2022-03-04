@@ -212,9 +212,9 @@ class ProductCtrl extends Controller
 			// $response = $client->SearchImageByName($request);
 			$response = $client->searchImageByPicAdvance($request, $runtime);
 			$found_products = $response->body->auctions;
-			//if(file_exists($imgPath)){
-				//unlink($imgPath);
-			//}
+			if(file_exists($imgPath)){
+				unlink($imgPath);
+			}
 			//echo $found_products;
 			if($found_products !== null){
 				$this->searchProductByImgInDb($found_products);
