@@ -228,7 +228,7 @@ class ProductCtrl extends Controller
 	public function searchProductByImgInDb($arrImage){
 		$cariId = array_column($arrImage, 'productId');
 		$searchedProducts = Products::whereIn('product_identifier', $cariId)->get();
-		echo response()->json($searchedProducts);
+		echo $searchedProducts;
 	}
 	
 	public function imgUpload(Request $request){
