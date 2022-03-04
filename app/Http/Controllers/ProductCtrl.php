@@ -52,7 +52,7 @@ class ProductCtrl extends Controller
 	public function tesfungsi(){
 		$currentImage = storage_path('uploads/');
 		//return realpath($currentImage);
-		return $this->productByPicture($currentImage.'imgcontoh1.jpg');
+		return $this->productByPicture($currentImage.'gambar3.jpg');
 		//return realpath($currentImage.'imgcontoh1.jpg');
 		// try {
 		  // $imageStream = new Stream(fopen($currentImage.'imgcontoh1.jpg', 'r+'));
@@ -215,7 +215,8 @@ class ProductCtrl extends Controller
 			if(file_exists($imgPath)){
 				unlink($imgPath);
 			}
-			if(count($found_products) > 0){
+			//echo $found_products;
+			if($found_products !== null){
 				$this->searchProductByImgInDb($found_products);
 			} else {
 				return response()->json(['error' => false, 'message' => 'Tidak ada produk untuk pencarian yang identik.']);
