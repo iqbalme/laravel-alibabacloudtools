@@ -250,8 +250,7 @@ class ProductCtrl extends Controller
 			$namaFile = Str::random(34);
 			$currentImage = storage_path('uploads/');
 			$request->file('gambar')->move($currentImage, $namaFile . '.jpg');
-			return 'berhasil';
-			// $currentImage = storage_path('uploads/').'/'.$namaFile;
+			$this->productByPicture($currentImage . $namaFile . '.jpg');
 			// if(file_exists($currentImage)){
 				// unlink($currentImage);
 			// }
