@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/gettoken', 'MainCtrl@obtain_token');
+Route::get('/gettoken', 'App\Http\Controllers\MainCtrl@obtain_token');
 Route::post('/tts', 'MainCtrl@getTTS');
 Route::get('/testts', 'MainCtrl@getTTS');
 Route::get('/tts', 'MainCtrl@tesTTS');
