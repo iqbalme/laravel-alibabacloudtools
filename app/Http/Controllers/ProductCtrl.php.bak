@@ -250,11 +250,7 @@ class ProductCtrl extends Controller
 			$namaFile = Str::random(34);
 			$currentImage = storage_path('uploads/');
 			$request->file('gambar')->move($currentImage, $namaFile . '.jpg');
-			return 'berhasil';
-			// $currentImage = storage_path('uploads/').'/'.$namaFile;
-			// if(file_exists($currentImage)){
-				// unlink($currentImage);
-			// }
+			$this->productByPicture($currentImage . $namaFile . '.jpg');
 		} else {
 			return response()->json(['error' => false, 'message' => 'Tidak ada produk untuk pencarian yang identik.']);
 		}

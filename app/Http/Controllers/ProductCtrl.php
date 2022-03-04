@@ -203,7 +203,6 @@ class ProductCtrl extends Controller
 		// 2. Filter images based on the str_attr field: str_attr!="value1" 
 		// 3. Filter images based on int_attr and str_attr fields: int_attr=1000 AND str_attr="value1"
 		//$request->filter = "kategori=accessories";
-		//$request->picContentObject = base64_encode($imageStream);
 		$request->picContentObject = $imageStream;
 		$runtime = new RuntimeOptions();
 		$runtime->maxIdleConns = 3;
@@ -213,8 +212,10 @@ class ProductCtrl extends Controller
 			// $response = $client->SearchImageByName($request);
 			$response = $client->searchImageByPicAdvance($request, $runtime);
 			$found_products = $response->body->auctions;
+			if(file_exists($imgPath)){
+				unlink($imgPath);
+			}
 			$this->searchProductByImgInDb($found_products);
-			//return response()->json($response->body->auctions);
 		} catch (TeaUnableRetryError $e) {
 			return response()->json($e->getLastException());
 		} catch (Exception $e) {
@@ -225,18 +226,9 @@ class ProductCtrl extends Controller
 	
 	//Search Product in DB by Image
 	public function searchProductByImgInDb($arrImage){
-		//$searchedProducts = [];
 		$cariId = array_column($arrImage, 'productId');
-		//foreach ($arrImage as $searchThisImage) {
-			//$foundProducts = Products::where('product_name', 'LIKE', '%' . str_replace('-', ' ', substr(json_encode($arrImage[0]->picName), 1, -5)) . '%')->get();
 		$searchedProducts = Products::whereIn('product_identifier', $cariId)->get();
-			//$foundProducts = DB::table('products')->where('product_name', 'LIKE', '%Digital Smart sport%')->get();
-			//foreach ($foundProducts as $product) {
-				//$searchedProducts[] = $product;
-			//}
-		//}
 		echo $searchedProducts;
-		//echo response()->json($searchedProducts);
 	}
 	
 	public function imgUpload(Request $request){
@@ -251,9 +243,6 @@ class ProductCtrl extends Controller
 			$currentImage = storage_path('uploads/');
 			$request->file('gambar')->move($currentImage, $namaFile . '.jpg');
 			$this->productByPicture($currentImage . $namaFile . '.jpg');
-			// if(file_exists($currentImage)){
-				// unlink($currentImage);
-			// }
 		} else {
 			return response()->json(['error' => false, 'message' => 'Tidak ada produk untuk pencarian yang identik.']);
 		}
