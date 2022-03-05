@@ -1,0 +1,30 @@
+<div class="bitcommerce defaultminheight mobile-columns-2 columns-4">
+	<ul class="products">
+		<div class="">	
+			<script>
+			var resultProducts = "";
+			for(let i=0;i<data.length;i++){
+				resultProducts += '<div class="vc-item">' +
+							'<li class="product">' +
+								'<div class="wd_product_wrapper">' +
+									'<div border="0" width="100%" style="table-layout:fixed;" class="qfycustomtable">' +
+										'<div class="qfycustomtr">' +
+											'<div class="qfycustomtd lefttd" valign="top">' +				
+												'<a class="product_a pitem" href="' + data[0].product_link + '" target="">' +
+													'<div class="front-image product_img "><img class=" ag_image" data-delay-image="1" src="' + data[0].product_image + '" alt="' + data[0].product_name + '" description="" title="" src-img="" style="display: block;"><i></i>' +
+													'</div>' +
+												'</a>' +
+											'</div>' +
+											'<div class="qfycustomtd righttd" valign="top">' +
+												'<a href="' + data[0].product_link + '" target=""><h3 class="product_title pitem">' + data[0].product_name + '</h3></a>' +
+											'</div>' +
+										'</div>' +
+									'</div>' +
+								'</div>' +
+							'</li>' +
+						'</div>'
+			}
+			</script>
+		</div>
+	</ul>
+</div>
