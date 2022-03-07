@@ -207,10 +207,11 @@ class MainCtrl extends Controller
 	}
 	
 	public function getTTS(Request $request){
-		$token = Token::first()->token;
-		$text = "this is sample of my application";
+		//$token = Token::first()->token;
+		//$text = "this is sample of my application";
+		$this->processPOSTRequest($this->nlsAppkey, $request->token, $request->text, $this->audioSaveFile, $this->format, $this->sampleRate);
 		//$this->processPOSTRequest($this->nlsAppkey, $token, $request->text, $this->audioSaveFile, $this->format, $this->sampleRate);
-		$this->processPOSTRequest($this->nlsAppkey, $token, $text, $this->audioSaveFile, $this->format, $this->sampleRate);
+		//$this->processPOSTRequest($this->nlsAppkey, $token, $text, $this->audioSaveFile, $this->format, $this->sampleRate);
 	}
 	
 	public function tesTTS(){
