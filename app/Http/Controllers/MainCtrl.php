@@ -43,8 +43,8 @@ class MainCtrl extends Controller
 		AlibabaCloud::accessKeyClient(
 					$this->AccessKeyID,
 					$this->AccessKeysecret)
-					//->regionId("cn-shanghai")
-					->regionId("ap-southeast-1")
+					->regionId("cn-shanghai")
+					//->regionId("ap-southeast-1")
 					->asDefaultClient();
 		try {
 			$response = AlibabaCloud::nlsCloudMeta()
