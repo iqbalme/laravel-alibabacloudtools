@@ -151,7 +151,7 @@ class MainCtrl extends Controller
 		);
 		$body = json_encode($taskArr);
 		print "The POST request body content: " . $body . "\n";
-		$curl = curl_init();
+		$curl = \curl_init();
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
 		/**
 		 * Set the HTTPS POST URL.
